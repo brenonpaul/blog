@@ -1,0 +1,55 @@
+header {
+    width: 100%;
+    background-image: linear-gradient(to bottom right, rgb(48, 45, 45), rgb(38, 38, 38));
+    position: fixed;
+}
+
+body {
+    margin: 0;
+}
+
+img {
+    margin-left: 50px;
+    padding: 5%;
+	max-width: 100%;
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+img:hover {
+    transform: translateY(-2px) scale(95%);
+}
+
+#itensMenu {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+	padding: 10px 10px 10px 0px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.navMenu ul {
+	text-align: center;
+}
+
+.navMenu li {
+    margin-left: 20px;
+    font-size: 20px;
+	display: inline;
+    font-family: 'Muli',sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+.navMenu a {
+    font-family: 'Muli',sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+.navMenu a:hover {
+    color: #00c37e;
+}

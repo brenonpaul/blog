@@ -1,0 +1,182 @@
+body {
+    margin: 0;
+    font-family: 'Muli',sans-serif;
+}
+
+#containerLogin {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, rgb(43, 38, 38), rgb(89, 104, 110));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#tituloLogin {
+    font-size: 200%;
+    margin-bottom: 3%;
+    color: white;
+    cursor: default;
+}
+
+#boxLogin {
+    width: 600px;
+    height: 450px;
+    background-image: linear-gradient(to bottom right, rgba(30, 30, 30, 0.7), rgba(44, 56, 61, 0.7));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.5%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px, rgba(0, 0, 0, 0.25) 0px 10px 15px;
+    transition: all .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+#boxLogin:hover {
+    transform: scale(99%);
+    border-top: solid 3px #00c37e;
+}
+
+#logoLogin {
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+#logoLogin:hover {
+    cursor: pointer;
+    transform: translateY(-5px) scale(102%);
+}
+
+#formLogin {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#linkCadastro a {
+    color: #00c37e;
+}
+
+#linkCadastro a:hover {
+    color: white;
+}
+
+#submitLogin {
+  display: none;
+}
+
+.inputLogin {
+    width: 70%;
+    height: 40px;
+    font-size: 18px;
+    color: rgb(40, 40, 40);
+    margin-bottom: 2%;
+    outline: none;
+}
+
+/*Botão Cadastrar*/
+.botaoLogin {
+    margin-top: 5%;
+    border-radius: 2px;
+    background-color: #00c37e;
+    color: white;
+    border: none;
+    transition: all .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+.botaoLogin-pushable {
+    position: relative;
+    margin-top: 5%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.botaoLogin-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.botaoLogin-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    #002619 0%,
+    #008859 8%,
+    #008859 92%,
+    #002619 100%
+  );
+}
+
+.botaoLogin-front {
+  display: block;
+  position: relative;
+  padding: 10px 80px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: #00c37e;
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.botaoLogin-pushable:hover {
+  filter: brightness(110%);
+}
+
+.botaoLogin-pushable:hover .botaoLogin-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.botaoLogin-pushable:active .botaoLogin-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.botaoLogin-pushable:hover .botaoLogin-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.botaoLogin-pushable:active .botaoLogin-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.botaoLogin-pushable:focus:not(:focus-visible) {
+  outline: none;
+}

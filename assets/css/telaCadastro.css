@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    font-family: 'Muli',sans-serif;
+}
+
+#containerCadastro {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, rgb(43, 38, 38), rgb(89, 104, 110));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#tituloCadastro {
+    font-size: 200%;
+    margin-bottom: 3%;
+    color: white;
+    cursor: default;
+}
+
+#boxCadastro {
+    width: 600px;
+    height: 500px;
+    background-image: linear-gradient(to bottom right, rgba(30, 30, 30, 0.7), rgba(44, 56, 61, 0.7));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.5%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px, rgba(0, 0, 0, 0.25) 0px 10px 15px;
+    transition: all .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+#boxCadastro:hover {
+    transform: scale(99%);
+    border-top: solid 3px #00c37e;
+}
+
+#logoCadastro {
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+#logoCadastro:hover {
+    cursor: pointer;
+    transform: translateY(-5px) scale(102%);
+}
+
+#formCadastro {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#submitCadastro {
+    display: none;
+}
+
+#botaoCadastro {
+  display: none;
+}
+
+.inputCadastro {
+    width: 70%;
+    height: 40px;
+    font-size: 18px;
+    color: rgb(40, 40, 40);
+    margin-bottom: 2%;
+    outline: none;
+}
+
+/*Botão Cadastrar*/
+.botaoCadastrar {
+    margin-top: 5%;
+    border-radius: 2px;
+    background-color: #00c37e;
+    color: white;
+    border: none;
+    transition: all .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+.botaoCadastrar-pushable {
+    position: relative;
+    margin-top: 5%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.botaoCadastrar-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.botaoCadastrar-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    #002619 0%,
+    #008859 8%,
+    #008859 92%,
+    #002619 100%
+  );
+}
+
+.botaoCadastrar-front {
+  display: block;
+  position: relative;
+  padding: 10px 80px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: #00c37e;
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.botaoCadastrar-pushable:hover {
+  filter: brightness(110%);
+}
+
+.botaoCadastrar-pushable:hover .botaoCadastrar-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.botaoCadastrar-pushable:active .botaoCadastrar-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.botaoCadastrar-pushable:hover .botaoCadastrar-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.botaoCadastrar-pushable:active .botaoCadastrar-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.botaoCadastrar-pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/*Botão voltar*/
+.botaoVoltar-pushable {
+    position: absolute;
+    margin-left: 5%;
+    margin-top: 5%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.botaoVoltar-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.botaoVoltar-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    #002619 0%,
+    #008859 8%,
+    #008859 92%,
+    #002619 100%
+  );
+}
+
+.botaoVoltar-front {
+  display: block;
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: #00c37e;
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.botaoVoltar-pushable:hover {
+  filter: brightness(110%);
+}
+
+.botaoVoltar-pushable:hover .botaoVoltar-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.botaoVoltar-pushable:active .botaoVoltar-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.botaoVoltar-pushable:hover .botaoVoltar-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.botaoVoltar-pushable:active .botaoVoltar-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.botaoVoltar-pushable:focus:not(:focus-visible) {
+  outline: none;
+}
