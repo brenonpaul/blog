@@ -1,10 +1,9 @@
 <?php
 require_once ('../../infra/connection.php');
-class Usuario {
+class Post {
+    public $postId;
+    public $descricao;
     public $idUsuario;
-    public $nome;
-    public $sexo;
-    private $senha;
 
     private $connection;
 
@@ -13,41 +12,29 @@ class Usuario {
     }
 
     //setters
-    public function setNome($nome) {
-        $this->nome = $nome;
+    public function setDescricao($descricao) {
+        $this->descricao = $descricao;
     }     
 
-    public function setSenha($senha) {
-        $this->senha = $senha;
-    }
-
-    public function setSexo($sexo) {
-        $this->sexo = $sexo;
+    public function setIdUsuario($idUsuario) {
+        $this->idUsuario = $idUsuario;
     }
 
     //getters
-    public function getIdUsuario() {
-        return $this->idUsuario;
+    public function getPostId() {
+        return $this->postId;
     }
 
-    public function getNome() {
-        return $this->nome;
+    public function getDescricao() {
+        return $this->descricao;
     }   
     
-    public function getSexo() {
-        return $this->sexo;
+    public function getIdsuario() {
+        return $this->idUsuario;
     }    
 
-    private function getSenha() {
-        return $this->senha;
-    }
 
     //consultas
-    public function loginUsuario($nome, $senha) {
-        $sql = "SELECT usuario_id, nome, senha, sexo from usuario WHERE nome = '$nome' AND senha = '$senha'";
-        return mysqli_query($this->connection->getConnection(), $sql);
-    }
-
     public function alteraUsuario($idUsuario, $nome, $sexo, $senha) {
         $sql = "UPDATE usuario SET ";
 
@@ -73,12 +60,12 @@ class Usuario {
         return mysqli_query($this->connection->getConnection(), $sql);
     }
 
-    public function cadastraUsuario($nome, $sexo, $senha) {
-        $this->nome = $nome;
-        $this->sexo = $sexo;
-        $this->senha = $senha;
+    public function cadastraPost($descricao, $usuarioId) {
+        $this->descricao = $descricao;
+        $this->usuarioId = $usuarioId;
 
-        $sql = "INSERT INTO usuario (nome, sexo, senha) VALUES ('$nome', '$sexo', '$senha')";
+        $sql = "INSERT INTO post (descricao, usuario_id) VALUES ('$descricao', '$usuarioId')";
+        die($sql);
         return mysqli_query($this->connection->getConnection(), $sql);
     }
 }

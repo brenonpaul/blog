@@ -2,22 +2,22 @@
 <?php
 require_once ('../model/Usuario.php');
 require_once ('../model/Consulta.php');
+require_once ('../model/Post.php');
 
-function cadastrar() {
-    $usuario = new Usuario;
-    $cadastro = $usuario->cadastraUsuario($_POST['nome'], $_POST['sexo'], $_POST['senha']);
-
+function cadastrarPost() {
+    $post = new Post;
+    $cadastro = $post->cadastraPost($_POST['descricao'], $_POST['idUsuario']);
+    
     session_start();
     if ($cadastro) {
         $_SESSION['categoria'] = "Sucesso!";
         $_SESSION['mensagem'] = "Usuário cadastrado!";
-        $_SESSION['email'] = $_POST['email'];
     } else {
         $_SESSION['categoria'] = "Erro";
         $_SESSION['mensagem'] = "Ocorreu um erro durante o cadastro.";
     }
 
-    header("Location: redirect.php?action=telaLogin");
+    header("Location: redirect.php?action=home");
 }
 
 function login() {

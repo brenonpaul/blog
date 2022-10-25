@@ -15,7 +15,7 @@ function telaLogin() {
 
 function telaCadastro() {
     session_start();
-    $nomePagina = "Tela de Cadastro | Box";
+    $nomePagina = "Blog do Povo | Cadastro";
     $mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : "";
     $categoria = isset($_SESSION['categoria']) ? $_SESSION['categoria'] : "";
 
@@ -56,6 +56,18 @@ function perfil() {
     unset($_SESSION['categoria']);
 
     require '../view/perfil.php';
+}
+
+function novaPostagem() {
+    session_start();
+    $nomePagina = "Blog do Povo | Cadastro de Post";
+    $mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : "";
+    $categoria = isset($_SESSION['categoria']) ? $_SESSION['categoria'] : "";
+
+    unset($_SESSION['mensagem']);
+    unset($_SESSION['categoria']);
+
+    require '../view/telaCadastroPost.php';
 }
 
 //Gerenciador de Rotas

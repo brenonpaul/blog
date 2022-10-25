@@ -21,10 +21,12 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="../controller/redirect.php?action=home">Home</a>
         </li>
+        <li class="nav-item pe-2 ps-2">
+          <a class="nav-link active" href="../controller/redirect.php?action=novaPostagem">Nova postagem</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" href="../controller/redirect.php?action=perfil">Perfil</a>
         </li>
-      
       </ul>
       <a href="../controller/usuario.php?action=logoff"><button type="button" class="btn btn-outline-light">Sair</button></a>
     </div>

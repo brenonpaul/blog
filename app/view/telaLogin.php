@@ -22,7 +22,8 @@
                 <input type="password" name="senha" class="form-control w-50 m-auto">
             </div>
             <button type="submit" class="btn btn-outline-success">Logar</button>
+            <p class="mt-2"><a href="redirect.php?action=telaCadastro">Ainda não possui conta?</a></p>
         </form>
-    </main>n
+    </main>
 </body>
 </html>

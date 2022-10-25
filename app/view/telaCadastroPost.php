@@ -12,24 +12,17 @@
 <body class="bg-dark">
     <h1 class="text-center text-light mt-5 mb-5"><?= $nomePagina; ?></h1>
     <main class="bg-light w-50 text-center m-auto rounded p-2">
-        <form method="POST" action="../controller/usuario.php?action=cadastrar">
+        <form method="POST" action="../controller/post.php?action=cadastrarPost">
             <div class="mb-3">
-                <label class="form-label">Nome de Usuário</label>
-                <input type="text" name="nome" class="form-control w-50 m-auto">
+                <label class="form-label">Escreva sua postagem</label>
+                <textarea name="descricao" class="form-control w-50 m-auto " wrap="hard" style="height: 85px"></textarea>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Sexo</label>
-                <select name="sexo" class="form-select w-50 m-auto">
-                    <option value="F">Feminino</option>
-                    <option value="m">Masculino</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" name="senha" class="form-control w-50 m-auto">
-            </div>
+            <input type="hidden" name="idUsuario" values="<?= $_SESSION['idUsuario' ]?>">
             <button type="submit" class="btn btn-outline-success">Cadastrar</button>
         </form>
-    </main>n
+    </main>
+    <?php 
+
+    ?>
 </body>
 </html>
