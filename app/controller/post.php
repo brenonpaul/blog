@@ -20,53 +20,6 @@ function cadastrarPost() {
     header("Location: redirect.php?action=home");
 }
 
-function login() {
-    $usuario = new Usuario;
-    $query = $usuario->loginUsuario($_POST['nome'], $_POST['senha']);
-    
-    if ($query && mysqli_num_rows($query) != 0) {
-        $row = mysqli_fetch_assoc($query);
-        
-        session_start();
-        // var_dump($row);die();
-        $_SESSION['idUsuario'] = $row['usuario_id'];
-        $_SESSION['nome'] = $row['nome'];
-        $_SESSION['sexo'] = $row['sexo'];
-        
-        header("Location: redirect.php?action=home");
-    } else {
-        session_start();
-        $_SESSION['nome'] = $_POST['nome'];
-
-        $_SESSION['categoria'] = "Erro";
-        $_SESSION['mensagem'] = "Usuário ou senha incorretos";
-
-        header("Location: redirect.php?action=telaLogin");
-    }
-
-}
-
-function logoff() {
-    session_start();
-    session_destroy();
-    header("Location: redirect.php?action=telaLogin");
-}
-
-function verificaEmail($email = NULL) {
-    if (isset($_GET['email'])) {
-        $email = $_GET['email'];
-    }
-
-    $consulta = new Consulta;
-    $verificacao = $consulta->consultaDuplicidadeEmail($email);
-
-    if (isset($_GET['email'])) {
-        echo json_encode(['duplicidade' => $verificacao]);
-    } else {
-        return $verificacao;
-    }
-}
-
 function alterar() {
     session_start();
     $usuario = new Usuario;
@@ -91,22 +44,22 @@ function alterar() {
     header("Location: redirect.php?action=perfil");
 }
 
-function excluir() {
+function excluirPost() {
     session_start();
-    $usuario = new Usuario;
+    $post = new Post;
     // print_r();die();
-    $exclusao = $usuario->excluirUsuario($_SESSION['idUsuario']);
+    $exclusao = $post->excluirPost($_GET['idPost']);
 
 
     if ($exclusao) {
         $_SESSION['categoria'] = "Sucesso!";
-        $_SESSION['mensagem'] = "Usuário excluído.";
+        $_SESSION['mensagem'] = "Post excluído.";
     } else {
         $_SESSION['categoria'] = "Erro";
-        $_SESSION['mensagem'] = "Usuário não foi excluído.";
+        $_SESSION['mensagem'] = "Post não foi excluído.";
     }
 
-        header("Location: redirect.php?action=telaLogin");
+        header("Location: redirect.php?action=home");
 }
 
 //Gerenciador de Rotas

@@ -51,22 +51,17 @@ class Post {
         return mysqli_query($this->connection->getConnection(), $sql);
     }
 
-
-    public function excluirUsuario($idUsuario) {
-        $sql = "DELETE FROM post WHERE usuario_id = '$idUsuario'";
-        mysqli_query($this->connection->getConnection(), $sql);
-
-        $sql = "DELETE FROM usuario WHERE usuario_id = '$idUsuario'";
-        return mysqli_query($this->connection->getConnection(), $sql);
-    }
-
     public function cadastraPost($descricao, $usuarioId) {
         $this->descricao = $descricao;
         $this->usuarioId = $usuarioId;
 
         $sql = "INSERT INTO post (descricao, usuario_id) VALUES ('$descricao', '$usuarioId')";
-        die($sql);
         return mysqli_query($this->connection->getConnection(), $sql);
+    }
+
+    public function excluirPost($idPost) {
+        $sql = "DELETE FROM post WHERE post_id = '$idPost'";
+        mysqli_query($this->connection->getConnection(), $sql);
     }
 }
 ?>

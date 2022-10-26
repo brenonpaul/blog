@@ -9,7 +9,7 @@ class Consulta {
     }
 
     function consultaPosts() {
-        $sql = "select post.descricao, usuario.nome from post left join usuario on usuario.usuario_id = post.usuario_id";
+        $sql = "select post.post_id postId, post.descricao, usuario.nome, post.usuario_id from post left join usuario on usuario.usuario_id = post.usuario_id";
         return  mysqli_query($this->connection->getConnection(), $sql);
     }
 }

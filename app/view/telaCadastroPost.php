@@ -17,7 +17,7 @@
                 <label class="form-label">Escreva sua postagem</label>
                 <textarea name="descricao" class="form-control w-50 m-auto " wrap="hard" style="height: 85px"></textarea>
             </div>
-            <input type="hidden" name="idUsuario" values="<?= $_SESSION['idUsuario' ]?>">
+            <input type="hidden" name="idUsuario" value="<?= $_SESSION['idUsuario' ]?>">
             <button type="submit" class="btn btn-outline-success">Cadastrar</button>
         </form>
     </main>

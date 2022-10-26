@@ -37,6 +37,8 @@ function home() {
     while($row = mysqli_fetch_assoc($posts)) {
         $rowPost[$i]['descricao'] = $row['descricao'];
         $rowPost[$i]['nome'] = $row['nome'];
+        $rowPost[$i]['idUsuario'] = $row['usuario_id'];
+        $rowPost[$i]['postId'] = $row['postId'];
         $i++;
     }
        

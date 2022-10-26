@@ -14,7 +14,18 @@ if (!isset($_SESSION['idUsuario'])) {
     
         <div class="card w-75 m-2">
             <div class="card-body">
-                <h5 class="card-title"><?= $value['nome'] ?><span class="fs-6 fw-light"> (autor)</span></h5>
+                <div class="d-flex justify-content-between">
+                    <h5 class="card-title"><?= $value['nome'] ?><span class="fs-6 fw-light"> (autor)</span></h5>
+
+                    <?php 
+                    if($value['idUsuario'] == $_SESSION['idUsuario']) {
+                    ?>
+                        <a href="../controller/post.php?action=excluirPost&idPost=<?php echo $value['postId'] ?>">apagar</a>
+                    <?php 
+                    }
+                    ?>
+
+                </div>
                 <hr>
                 <p class="card-text"><?= $value['descricao'] ?></p>
             </div>
@@ -25,6 +36,4 @@ if (!isset($_SESSION['idUsuario'])) {
     ?>
     </main>
 </body>
-    <script src="../../assets/js/geral.js"></script>
-    <script src="../../assets/js/home.js"></script>
 </html>
