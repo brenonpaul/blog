@@ -59,6 +59,16 @@ class Post {
         return mysqli_query($this->connection->getConnection(), $sql);
     }
 
+    public function editaPost($id, $descricao, $usuarioId) {
+        $this->postId = $id;
+        $this->descricao = $descricao;
+        $this->usuarioId = $usuarioId;
+
+        $sql = "UPDATE post SET descricao = '$descricao' WHERE post_id = $id";
+        return mysqli_query($this->connection->getConnection(), $sql);
+    }
+    
+
     public function excluirPost($idPost) {
         $sql = "DELETE FROM post WHERE post_id = '$idPost'";
         mysqli_query($this->connection->getConnection(), $sql);

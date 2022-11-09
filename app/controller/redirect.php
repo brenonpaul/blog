@@ -76,12 +76,13 @@ function editarPost() {
     $consultaPost = new Consulta();
     $post = $consultaPost->consultaPosts($_GET['idPost']);
     $post = mysqli_fetch_assoc($post);
-
+    var_dump($post);
     session_start();
     $nomePagina = "Blog do Povo | Edição de Post";
     $mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : "";
     $categoria = isset($_SESSION['categoria']) ? $_SESSION['categoria'] : "";
     $edicao = true;
+
     //enviar dados para a tela de cadastro
     unset($_SESSION['mensagem']);
     unset($_SESSION['categoria']);

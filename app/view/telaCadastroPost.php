@@ -12,13 +12,47 @@
 <body class="bg-dark">
     <h1 class="text-center text-light mt-5 mb-5"><?= $nomePagina; ?></h1>
     <main class="bg-light w-50 text-center m-auto rounded p-2">
-        <form method="POST" action="../controller/post.php?action=cadastrarPost">
+        <?php 
+        if(isset($post)) {
+        ?>
+            <form method="POST" action="../controller/post.php?action=editarPost">
+        <?php
+        }else {
+        ?>
+            <form method="POST" action="../controller/post.php?action=cadastrarPost">
+        <?php
+        }
+        ?>
             <div class="mb-3">
                 <label class="form-label">Escreva sua postagem</label>
-                <textarea name="descricao" class="form-control w-50 m-auto " wrap="hard" style="height: 85px"></textarea>
+
+                <?php
+                if(isset($post)) {
+                ?>
+                    <input type="text" value="<?= $post['descricao'] ?>" name="descricao" class="form-control w-50 m-auto " wrap="hard" style="height: 85px">
+                <?php 
+                }else {
+                ?>
+                    <input type="text" name="descricao" class="form-control w-50 m-auto " wrap="hard" style="height: 85px">
+                <?php
+                }
+                ?>
+
             </div>
             <input type="hidden" name="idUsuario" value="<?= $_SESSION['idUsuario' ]?>">
-            <button type="submit" class="btn btn-outline-success">Cadastrar</button>
+            <?php 
+            if(!isset($post)) {
+            ?>
+                <button type="submit" class="btn btn-outline-success">Cadastrar</button>
+            <?php
+            }else {
+            ?>
+                <input type="hidden" name="postId" value="<?= $post['postId']?>">
+                <button type="submit" class="btn btn-outline-success">Editar</button>
+            <?php
+            }
+            ?>
+
         </form>
     </main>
     <?php 

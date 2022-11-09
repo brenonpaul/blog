@@ -5,6 +5,7 @@ require_once ('../model/Consulta.php');
 require_once ('../model/Post.php');
 
 function cadastrarPost() {
+
     $post = new Post;
     $cadastro = $post->cadastraPost($_POST['descricao'], $_POST['idUsuario']);
     
@@ -22,7 +23,7 @@ function cadastrarPost() {
 
 function editarPost() {
     $post = new Post;
-    $cadastro = $post->cadastraPost($_POST['descricao'], $_POST['idUsuario']);
+    $edicao = $post->editaPost($_POST['postId'], $_POST['descricao'], $_POST['idUsuario']);
     
     session_start();
     if ($cadastro) {
