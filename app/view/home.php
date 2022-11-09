@@ -21,6 +21,7 @@ if (!isset($_SESSION['idUsuario'])) {
                     if($value['idUsuario'] == $_SESSION['idUsuario']) {
                     ?>
                         <a href="../controller/post.php?action=excluirPost&idPost=<?php echo $value['postId'] ?>">apagar</a>
+                        <a href="../controller/redirect.php?action=editarPost&idPost=<?php echo $value['postId'] ?>">Editar</a>
                     <?php 
                     }
                     ?>

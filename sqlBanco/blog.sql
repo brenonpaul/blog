@@ -10,7 +10,7 @@ CREATE TABLE post (
     descricao VARCHAR(265),
     usuario_id INT,
     FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
-);
+)
 
 INSERT INTO usuario(nome, senha, sexo) values 
 ('Ruan', '1234', 'M'),

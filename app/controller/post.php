@@ -20,28 +20,20 @@ function cadastrarPost() {
     header("Location: redirect.php?action=home");
 }
 
-function alterar() {
+function editarPost() {
+    $post = new Post;
+    $cadastro = $post->cadastraPost($_POST['descricao'], $_POST['idUsuario']);
+    
     session_start();
-    $usuario = new Usuario;
-
-    if($_POST['senha'] == $_POST['confirmarSenha']) {
-        $alteracao = $usuario->alteraUsuario($_POST['idUsuario'], $_POST['nome'], $_POST['sexo'], $_POST['senha']);
-        if ($alteracao) {
-            $_SESSION['categoria'] = "Sucesso!";
-            $_SESSION['mensagem'] = "Usuário alterado!";
-
-            $_SESSION['nome'] = $_POST['nome'] != NULL ? $_POST['nome'] : $_SESSION['nome'];
-            $_SESSION['sexo'] = $_POST['sexo'] != NULL ? $_POST['sexo'] : $_SESSION['sexo'];
-        } else {
-            $_SESSION['categoria'] = "Erro";
-            $_SESSION['mensagem'] = "Ocorreu um erro durante a alteração.";
-        }
+    if ($cadastro) {
+        $_SESSION['categoria'] = "Sucesso!";
+        $_SESSION['mensagem'] = "Usuário cadastrado!";
     } else {
         $_SESSION['categoria'] = "Erro";
-        $_SESSION['mensagem'] = "A confirmação de senha está incorreta!";
+        $_SESSION['mensagem'] = "Ocorreu um erro durante o cadastro.";
     }
 
-    header("Location: redirect.php?action=perfil");
+    header("Location: redirect.php?action=home");
 }
 
 function excluirPost() {
