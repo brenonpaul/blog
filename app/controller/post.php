@@ -3,9 +3,8 @@
 require_once ('../model/Usuario.php');
 require_once ('../model/Consulta.php');
 require_once ('../model/Post.php');
-
+session_start();
 function cadastrarPost() {
-
     $post = new Post;
     $cadastro = $post->cadastraPost($_POST['descricao'], $_POST['idUsuario']);
     
@@ -17,8 +16,10 @@ function cadastrarPost() {
         $_SESSION['categoria'] = "Erro";
         $_SESSION['mensagem'] = "Ocorreu um erro durante o cadastro.";
     }
-
-    header("Location: redirect.php?action=home");
+    if($_SESSION['tipoUsuario'] == 0)
+        header("Location: redirect.php?action=home");
+    else 
+        header("Location: redirect.php?action=homeAdmin");
 }
 
 function editarPost() {
@@ -33,14 +34,15 @@ function editarPost() {
         $_SESSION['categoria'] = "Erro";
         $_SESSION['mensagem'] = "Ocorreu um erro durante o cadastro.";
     }
-
-    header("Location: redirect.php?action=home");
+    if($_SESSION['tipoUsuario'] == 0)
+        header("Location: redirect.php?action=home");
+    else 
+    header("Location: redirect.php?action=homeAdmin");
 }
 
 function excluirPost() {
     session_start();
     $post = new Post;
-    // print_r();die();
     $exclusao = $post->excluirPost($_GET['idPost']);
 
 
@@ -52,7 +54,10 @@ function excluirPost() {
         $_SESSION['mensagem'] = "Post não foi excluído.";
     }
 
+    if($_SESSION['tipoUsuario'] == 0)
         header("Location: redirect.php?action=home");
+    else 
+        header("Location: redirect.php?action=homeAdmin");
 }
 
 //Gerenciador de Rotas

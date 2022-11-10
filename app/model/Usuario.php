@@ -44,7 +44,7 @@ class Usuario {
 
     //consultas
     public function loginUsuario($nome, $senha) {
-        $sql = "SELECT usuario_id, nome, senha, sexo from usuario WHERE nome = '$nome' AND senha = '$senha'";
+        $sql = "SELECT usuario_id, nome, senha, sexo, tipo_usuario from usuario WHERE nome = '$nome' AND senha = '$senha'";
         return mysqli_query($this->connection->getConnection(), $sql);
     }
 
@@ -79,6 +79,21 @@ class Usuario {
         $this->senha = $senha;
 
         $sql = "INSERT INTO usuario (nome, sexo, senha) VALUES ('$nome', '$sexo', '$senha')";
+        return mysqli_query($this->connection->getConnection(), $sql);
+    }
+
+    public function alteraUsuarioAdmin($novaIdUsuario, $nome, $sexo, $antigaIdUsuario) {
+        $sql = "UPDATE usuario SET ";
+
+        if ($sexo != NULL)
+            $sql .= "sexo = '$sexo', ";
+        if ($sexo != NULL)
+            $sql .= "usuario_id = '$novaIdUsuario', ";
+        if ($nome != NULL)
+            $sql .= "nome = '$nome' ";
+
+        $sql .= "WHERE usuario_id = '$antigaIdUsuario';";
+  
         return mysqli_query($this->connection->getConnection(), $sql);
     }
 }

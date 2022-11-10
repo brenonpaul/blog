@@ -17,4 +17,14 @@ class Consulta {
 
         return  mysqli_query($this->connection->getConnection(), $sql);
     }
+
+    function consultaUsuarios($nome=null) {
+       
+        if($nome == null)
+            $sql = "select usuario.usuario_id, usuario.nome, usuario.sexo, usuario.tipo_usuario from usuario";
+        else 
+            $sql = "select usuario.usuario_id, usuario.nome, usuario.sexo, usuario.tipo_usuario from usuario where usuario.nome like '%$nome%'";
+
+        return  mysqli_query($this->connection->getConnection(), $sql);
+    }
 }

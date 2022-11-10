@@ -12,10 +12,6 @@
 <body>
 <nav class="navbar-expand-lg navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -24,8 +20,17 @@
         <li class="nav-item pe-2 ps-2">
           <a class="nav-link active" href="../controller/redirect.php?action=novaPostagem">Nova postagem</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item me-5">
           <a class="nav-link active" href="../controller/redirect.php?action=perfil">Perfil</a>
+        </li>
+        <li class="nav-item ms-5">
+          <form action="../controller/redirect.php" class="input-group mb-3 ps-3">
+            <input type="text" name="nome" class="form-control ms-5" placeholder="busque outras pessoas" aria-describedby="basic-addon2">
+            <input type="hidden" name="action" value="pesquisaUsuario">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-secondary" type="button">Buscar</button>
+            </div>
+          </form>
         </li>
       </ul>
       <a href="../controller/usuario.php?action=logoff"><button type="button" class="btn btn-outline-light">Sair</button></a>

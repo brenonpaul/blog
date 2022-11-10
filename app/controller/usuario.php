@@ -28,12 +28,15 @@ function login() {
         $row = mysqli_fetch_assoc($query);
         
         session_start();
-        // var_dump($row);die();
         $_SESSION['idUsuario'] = $row['usuario_id'];
         $_SESSION['nome'] = $row['nome'];
         $_SESSION['sexo'] = $row['sexo'];
-        
-        header("Location: redirect.php?action=home");
+        $_SESSION['tipoUsuario'] = $row['tipo_usuario'];
+   
+        if($row['tipo_usuario'] == 0)
+            header("Location: redirect.php?action=home");
+        else
+            header("Location: redirect.php?action=homeAdmin");
     } else {
         session_start();
         $_SESSION['nome'] = $_POST['nome'];
@@ -52,20 +55,6 @@ function logoff() {
     header("Location: redirect.php?action=telaLogin");
 }
 
-function verificaEmail($email = NULL) {
-    if (isset($_GET['email'])) {
-        $email = $_GET['email'];
-    }
-
-    $consulta = new Consulta;
-    $verificacao = $consulta->consultaDuplicidadeEmail($email);
-
-    if (isset($_GET['email'])) {
-        echo json_encode(['duplicidade' => $verificacao]);
-    } else {
-        return $verificacao;
-    }
-}
 
 function alterar() {
     session_start();
@@ -94,8 +83,11 @@ function alterar() {
 function excluir() {
     session_start();
     $usuario = new Usuario;
-    // print_r();die();
-    $exclusao = $usuario->excluirUsuario($_SESSION['idUsuario']);
+ 
+    if(isset($_GET['idUsuario']))
+        $exclusao = $usuario->excluirUsuario($_GET['idUsuario']);
+    else 
+        $exclusao = $usuario->excluirUsuario($_SESSION['idUsuario']);
 
 
     if ($exclusao) {
@@ -105,8 +97,22 @@ function excluir() {
         $_SESSION['categoria'] = "Erro";
         $_SESSION['mensagem'] = "Usuário não foi excluído.";
     }
-
+    
+    if(isset($_GET['idUsuario']))
+        header("Location: redirect.php?nome=&action=pesquisaUsuario");
+    else 
         header("Location: redirect.php?action=telaLogin");
+}
+
+function alterarUsuarioAdmin() {
+    session_start();
+    $usuario = new Usuario;
+    $alteracao = $usuario->alteraUsuarioAdmin($_POST['novaIdUsuario'], $_POST['nome'], $_POST['sexo'], $_POST['antigaIdUsuario']);
+
+    $_SESSION['categoria'] = "Sucesso";
+    $_SESSION['mensagem'] = "Usuário alterado!";
+    
+    header("Location: redirect.php?nome=".$_POST['nome']."&action=pesquisaUsuario");
 }
 
 //Gerenciador de Rotas

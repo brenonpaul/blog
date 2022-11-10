@@ -30,6 +30,6 @@
             </div>
             <button type="submit" class="btn btn-outline-success">Cadastrar</button>
         </form>
-    </main>n
+    </main>
 </body>
 </html>

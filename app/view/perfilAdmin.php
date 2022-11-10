@@ -8,19 +8,19 @@ require_once "header.php";
 //session_destroy();
 ?>
     <main class="container text-center">
-        <form method="post" action="../controller/usuario.php?action=alterar">
+        <form method="post" action="../controller/usuario.php?action=alterarUsuarioAdmin">
             <h3 class="mb-5"><?= $nomePagina; ?></h3>
             <hr>
-            <h2 class="form-label">Id de Usuário: <?=$_SESSION['idUsuario']?></h2>
-            <input type="hidden" name="idUsuario" value="<?=$_SESSION['idUsuario']?>">
+            <label class="form-label">Id de Usuário</label>
+            <input type="text" name="novaIdUsuario" class="form-control w-25 m-auto" value="<?=$usuario['usuario_id']?>">
+            <input type="hidden" name="antigaIdUsuario" value="<?=$usuario['usuario_id']?>">
             <label class="form-label">Nome</label>
-            <input type="text" name="nome" class="form-control w-25 m-auto" value="<?=$_SESSION['nome']?>">
+            <input type="text" name="nome" class="form-control w-25 m-auto" value="<?=$usuario['nome']?>">
             <label class="form-label mt-3">Sexo</label>
             <div class="mb-3  w-25 m-auto">
                 <select name="sexo" class="form-select w-50 m-auto">
-
                     <?php 
-                    if($_SESSION['sexo'] == "F") {
+                    if($usuario['sexo'] == "F") {
                     ?>
                         <option value="F" selected>Feminino</option>
                     <?php 
@@ -30,7 +30,7 @@ require_once "header.php";
                     <?php   
                     }
                     
-                    if($_SESSION['sexo'] == "M") {
+                    if($usuario['sexo'] == "M") {
                     ?>
                         <option value="M" selected>Masculino</option>
                     <?php 
@@ -42,13 +42,9 @@ require_once "header.php";
                     ?>
                 </select>
             </div>
-            <label class="form-label">Senha</label>
-            <input type="password" name="senha" class="form-control w-25 m-auto" placeholder="Informe sua senha" required>
-            <label class="form-label">Confirmar Senha</label>
-            <input type="password" name="confirmarSenha" class="form-control w-25 m-auto" placeholder="Informe sua senha" required>
             <button type="submit" class="btn btn-outline-dark mt-2">Editar</button>
             <br>
-            <a href="../controller/usuario.php?action=excluir"><button type="button" class="btn btn-outline-danger mt-3">Excluir Conta</button></a>
+            <a href="../controller/usuario.php?action=excluir&idUsuario=<?=$usuario['usuario_id']?>"><button type="button" class="btn btn-outline-danger mt-3">Excluir Conta</button></a>
         </form>
     </main>
 </body>
